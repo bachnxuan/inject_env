@@ -8,3 +8,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+module/src/main/cpp/cmake-build-*/
+.vscode/
+/Inject-Environment-*.zip
