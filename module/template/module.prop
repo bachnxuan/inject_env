@@ -3,5 +3,5 @@ name=${moduleName}
 version=${versionName}
 versionCode=${versionCode}
 author=bachnxuan
-description=Inject ZYGISK_ENABLED env to KernelSU Next to pass its zygisk check.
+description=Inject ZYGISK_ENABLED to KernelSU managers to pass the zygisk check.
 #updateJson=

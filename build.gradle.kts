@@ -21,7 +21,7 @@ val gitCommitHash = "git rev-parse --verify --short HEAD".execute()
 // also the soname
 val moduleId by extra("inject_env")
 val moduleName by extra("Inject Environment")
-val verName by extra("v1")
+val verName by extra("v2")
 val verCode by extra(gitCommitCount)
 val commitHash by extra(gitCommitHash)
 val abiList by extra(listOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64"))

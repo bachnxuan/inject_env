@@ -5,7 +5,7 @@ set(CXX_FLAGS "${CXX_FLAGS} -fno-exceptions -fno-rtti -fvisibility=hidden -fvisi
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${CXX_FLAGS}")
 
-add_library(${MODULE_NAME} SHARED inject.cpp)
+add_library(${MODULE_NAME} SHARED inject.cpp ksu_mgr.c)
 target_link_libraries(${MODULE_NAME} cxx log)
 
 add_subdirectory(external)
