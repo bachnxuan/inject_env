@@ -1,3 +1,6 @@
 [submodule "module/src/main/cpp/external/libcxx"]
 	path = module/src/main/cpp/external/libcxx
 	url = https://github.com/topjohnwu/libcxx
+[submodule "module/src/main/cpp/external/local_cxa_atexit_finalize_impl"]
+	path = module/src/main/cpp/external/local_cxa_atexit_finalize_impl
+	url = https://github.com/5ec1cff/local_cxa_atexit_finalize_impl.git

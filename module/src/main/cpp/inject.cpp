@@ -28,8 +28,6 @@ const char *MODULE_NAME = "InjectEnv";
 
 #define LOGD(...) \
     __android_log_print(ANDROID_LOG_DEBUG, MODULE_NAME, __VA_ARGS__)
-#define LOGI(...) \
-    __android_log_print(ANDROID_LOG_INFO, MODULE_NAME, __VA_ARGS__)
 #define LOGE(...) \
     __android_log_print(ANDROID_LOG_ERROR, MODULE_NAME, __VA_ARGS__)
 
