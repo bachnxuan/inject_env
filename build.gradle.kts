@@ -1,27 +1,22 @@
 import com.android.build.gradle.AppExtension
-import java.io.ByteArrayOutputStream
 
 plugins {
     alias(libs.plugins.agp.app) apply false
 }
 
-fun String.execute(currentWorkingDir: File = file("./")): String {
-    val byteOut = ByteArrayOutputStream()
-    project.exec {
+fun Project.runCommand(vararg command: String, currentWorkingDir: File = file("./")): String =
+    providers.exec {
         workingDir = currentWorkingDir
-        commandLine = split("\\s".toRegex())
-        standardOutput = byteOut
-    }
-    return String(byteOut.toByteArray()).trim()
-}
+        commandLine(command.asList())
+    }.standardOutput.asText.get().trim()
 
-val gitCommitCount = "git rev-list HEAD --count".execute().toInt()
-val gitCommitHash = "git rev-parse --verify --short HEAD".execute()
+val gitCommitCount = runCommand("git", "rev-list", "HEAD", "--count").toInt()
+val gitCommitHash = runCommand("git", "rev-parse", "--verify", "--short", "HEAD")
 
 // also the soname
 val moduleId by extra("inject_env")
 val moduleName by extra("Inject Environment")
-val verName by extra("v2")
+val verName by extra("v3")
 val verCode by extra(gitCommitCount)
 val commitHash by extra(gitCommitHash)
 val abiList by extra(listOf("arm64-v8a", "armeabi-v7a", "x86", "x86_64"))
@@ -35,7 +30,7 @@ val androidSourceCompatibility by extra(JavaVersion.VERSION_17)
 val androidTargetCompatibility by extra(JavaVersion.VERSION_17)
 
 tasks.register("Delete", Delete::class) {
-    delete(rootProject.buildDir)
+    delete(rootProject.layout.buildDirectory)
 }
 
 fun Project.configureBaseExtension() {
